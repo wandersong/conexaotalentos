@@ -47,6 +47,14 @@ class _EmptyMessagesWidgetState extends State<EmptyMessagesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    context.watch<FFAppState>();
+
+    return Align(
+      alignment: AlignmentDirectional(0.0, 0.0),
+      child: Text(
+        'Sem dados',
+        style: FlutterFlowTheme.of(context).titleLarge,
+      ),
+    );
   }
 }

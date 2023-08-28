@@ -1,3 +1,4 @@
+import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,13 @@ void main() async {
 
   await FlutterFlowTheme.initialize();
 
-  runApp(MyApp());
+  final appState = FFAppState(); // Initialize FFAppState
+  await appState.initializePersistedState();
+
+  runApp(ChangeNotifierProvider(
+    create: (context) => appState,
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -130,11 +137,9 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'MAINHomeCandidato': MAINHomeCandidatoWidget(),
-      'MAINSavedJobs': MAINSavedJobsWidget(),
+      'Inscrito-empregos': InscritoEmpregosWidget(),
       'MAIN_Chat': MAINChatWidget(),
-      'MAIN_Candidates': MAINCandidatesWidget(),
       'MAIN_MyProfile': MAINMyProfileWidget(),
-      'MAINHomeEmpresa': MAINHomeEmpresaWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -191,18 +196,6 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.group_outlined,
-              size: 24.0,
-            ),
-            activeIcon: Icon(
-              Icons.group,
-              size: 24.0,
-            ),
-            label: ' ',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.person_outlined,
               size: 24.0,
             ),
@@ -211,18 +204,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: '',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.work_outline,
-              size: 24.0,
-            ),
-            activeIcon: Icon(
-              Icons.work_outlined,
-              size: 24.0,
-            ),
-            label: ' ',
             tooltip: '',
           )
         ],

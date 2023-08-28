@@ -40,6 +40,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFF262D34),
@@ -74,7 +76,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Image.asset(
-                            'assets/images/Group_27.png',
+                            'assets/images/Group_12.png',
                             width: 170.0,
                             fit: BoxFit.fitWidth,
                           ),

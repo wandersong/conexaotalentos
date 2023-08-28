@@ -43,20 +43,6 @@
       ]
     },
     {
-      "collectionGroup": "jobPosts",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "postedBy",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "timeCreated",
-          "order": "DESCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "chats",
       "queryScope": "COLLECTION",
       "fields": [
@@ -80,6 +66,20 @@
         },
         {
           "fieldPath": "appliedTime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "jobPosts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "postedBy",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timeCreated",
           "order": "DESCENDING"
         }
       ]

@@ -47,6 +47,8 @@ class _JobPostMyJobApplicantsWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<JobPostsRecord>(
       stream: JobPostsRecord.getDocument(widget.jobPostDetails!),
       builder: (context, snapshot) {
@@ -82,61 +84,11 @@ class _JobPostMyJobApplicantsWidgetState
                         children: [
                           Stack(
                             children: [
-                              Image.network(
-                                valueOrDefault<String>(
-                                  jobPostMyJobApplicantsJobPostsRecord
-                                      .photoHero,
-                                  'https://static.independent.co.uk/2021/07/20/13/spacex%20starship%20launch%20latest.jpg?width=982&height=726&auto=webp&quality=75',
-                                ),
+                              Image.asset(
+                                'assets/images/talentos1.jpg',
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 200.0,
                                 fit: BoxFit.cover,
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(-0.8, 1.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 175.0, 0.0, 0.0),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 3.0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: Container(
-                                      width: 60.0,
-                                      height: 60.0,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFEEEEEE),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional(-0.84, 0.88),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  2.0, 2.0, 2.0, 2.0),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Image.network(
-                                              valueOrDefault<String>(
-                                                jobPostMyJobApplicantsJobPostsRecord
-                                                    .companyLogo,
-                                                'https://24activenews.com/wp-content/uploads/2021/04/23-04-2021_SpaceX.jpg',
-                                              ),
-                                              width: 60.0,
-                                              height: 60.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -366,17 +318,6 @@ class _JobPostMyJobApplicantsWidgetState
                                   List<AppliedJobsRecord>
                                       listViewAppliedJobsRecordList =
                                       snapshot.data!;
-                                  if (listViewAppliedJobsRecordList.isEmpty) {
-                                    return Center(
-                                      child: Image.asset(
-                                        'assets/images/noAppliedJobs@2x.png',
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.7,
-                                        height: 330.0,
-                                      ),
-                                    );
-                                  }
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
@@ -464,36 +405,7 @@ class _JobPostMyJobApplicantsWidgetState
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  12.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        width: 60.0,
-                                                        height: 60.0,
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                        child: Image.network(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            containerUsersRecord
-                                                                .photoUrl,
-                                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/health-ai-mj6puy/assets/hu4vs0lstizz/UI_avatar_2@3x.png',
-                                                          ),
-                                                          fit: BoxFit.fitHeight,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
+                                                                  5.0,
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),

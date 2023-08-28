@@ -39,6 +39,8 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -122,7 +124,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                       onTap: () async {
                         await currentUserReference!
                             .update(createUsersRecordData(
-                          profileType: 'candidato',
+                          empresa: false,
                         ));
 
                         context.pushNamed('Profile-data');
@@ -192,7 +194,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                         onTap: () async {
                           await currentUserReference!
                               .update(createUsersRecordData(
-                            profileType: 'empresa',
+                            empresa: true,
                           ));
 
                           context.pushNamed('CompanyProfile');

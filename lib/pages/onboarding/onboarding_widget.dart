@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -39,6 +40,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -348,7 +351,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed('MAINHomeCandidato');
+                      if (valueOrDefault<bool>(
+                          currentUserDocument?.empresa, false)) {
+                        context.pushNamed('MAINHomeEmpresa');
+                      } else {
+                        context.pushNamed('MAINHomeCandidato');
+                      }
                     },
                     text: 'Continuar',
                     options: FFButtonOptions(

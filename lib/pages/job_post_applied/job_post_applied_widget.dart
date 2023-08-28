@@ -47,6 +47,8 @@ class _JobPostAppliedWidgetState extends State<JobPostAppliedWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<JobPostsRecord>(
       stream: JobPostsRecord.getDocument(widget.jobPostDetails!),
       builder: (context, snapshot) {
@@ -79,56 +81,11 @@ class _JobPostAppliedWidgetState extends State<JobPostAppliedWidget> {
                   children: [
                     Stack(
                       children: [
-                        Image.network(
-                          valueOrDefault<String>(
-                            jobPostAppliedJobPostsRecord.photoHero,
-                            'https://static.independent.co.uk/2021/07/20/13/spacex%20starship%20launch%20latest.jpg?width=982&height=726&auto=webp&quality=75',
-                          ),
+                        Image.asset(
+                          'assets/images/talentos1.jpg',
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 200.0,
                           fit: BoxFit.cover,
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(-0.8, 1.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 175.0, 0.0, 0.0),
-                            child: Material(
-                              color: Colors.transparent,
-                              elevation: 3.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Container(
-                                width: 60.0,
-                                height: 60.0,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFEEEEEE),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Align(
-                                  alignment: AlignmentDirectional(-0.84, 0.88),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        2.0, 2.0, 2.0, 2.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.network(
-                                        valueOrDefault<String>(
-                                          jobPostAppliedJobPostsRecord
-                                              .companyLogo,
-                                          'https://24activenews.com/wp-content/uploads/2021/04/23-04-2021_SpaceX.jpg',
-                                        ),
-                                        width: 60.0,
-                                        height: 60.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(

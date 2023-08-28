@@ -130,18 +130,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SEARCHJobsWidget(),
         ),
         FFRoute(
-          name: 'MAINSavedJobs',
-          path: '/mAINSavedJobs',
+          name: 'Inscrito-empregos',
+          path: '/inscritoEmpregos',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'MAINSavedJobs')
-              : MAINSavedJobsWidget(),
+              ? NavBarPage(initialPage: 'Inscrito-empregos')
+              : InscritoEmpregosWidget(),
         ),
         FFRoute(
           name: 'MAIN_Candidates',
           path: '/mAINCandidates',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'MAIN_Candidates')
-              : MAINCandidatesWidget(),
+          builder: (context, params) => MAINCandidatesWidget(),
         ),
         FFRoute(
           name: 'SEARCH_Candidates',
@@ -229,7 +227,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'createJob',
           path: '/createJob',
-          builder: (context, params) => CreateJobWidget(),
+          builder: (context, params) => CreateJobWidget(
+            omeDaempresa: params.getParam('omeDaempresa', ParamType.String),
+          ),
         ),
         FFRoute(
           name: 'candidateDetails',
@@ -270,9 +270,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MAINHomeEmpresa',
           path: '/mAINHomeEmpresa',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'MAINHomeEmpresa')
-              : MAINHomeEmpresaWidget(),
+          builder: (context, params) => MAINHomeEmpresaWidget(),
+        ),
+        FFRoute(
+          name: 'VagasPublicadas',
+          path: '/vagasPublicadas',
+          builder: (context, params) => VagasPublicadasWidget(),
+        ),
+        FFRoute(
+          name: 'Profile-Empresa',
+          path: '/profileEmpresa',
+          builder: (context, params) => ProfileEmpresaWidget(),
+        ),
+        FFRoute(
+          name: 'MAIN_MyProfileEmpresa',
+          path: '/mAINMyProfileEmpresa',
+          builder: (context, params) => MAINMyProfileEmpresaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

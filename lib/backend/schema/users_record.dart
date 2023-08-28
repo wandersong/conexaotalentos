@@ -98,6 +98,11 @@ class UsersRecord extends FirestoreRecord {
   bool get isGuest => _isGuest ?? false;
   bool hasIsGuest() => _isGuest != null;
 
+  // "empresa" field.
+  bool? _empresa;
+  bool get empresa => _empresa ?? false;
+  bool hasEmpresa() => _empresa != null;
+
   void _initializeFields() {
     _displayName = snapshotData['display_name'] as String?;
     _email = snapshotData['email'] as String?;
@@ -115,6 +120,7 @@ class UsersRecord extends FirestoreRecord {
     _salary = snapshotData['salary'] as String?;
     _company = snapshotData['company'] as DocumentReference?;
     _isGuest = snapshotData['isGuest'] as bool?;
+    _empresa = snapshotData['empresa'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -161,6 +167,7 @@ class UsersRecord extends FirestoreRecord {
             () => toRef(snapshot.data['company']),
           ),
           'isGuest': snapshot.data['isGuest'],
+          'empresa': snapshot.data['empresa'],
         },
         UsersRecord.collection.doc(snapshot.objectID),
       );
@@ -213,6 +220,7 @@ Map<String, dynamic> createUsersRecordData({
   String? salary,
   DocumentReference? company,
   bool? isGuest,
+  bool? empresa,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -232,6 +240,7 @@ Map<String, dynamic> createUsersRecordData({
       'salary': salary,
       'company': company,
       'isGuest': isGuest,
+      'empresa': empresa,
     }.withoutNulls,
   );
 
@@ -258,7 +267,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.profileType == e2?.profileType &&
         e1?.salary == e2?.salary &&
         e1?.company == e2?.company &&
-        e1?.isGuest == e2?.isGuest;
+        e1?.isGuest == e2?.isGuest &&
+        e1?.empresa == e2?.empresa;
   }
 
   @override
@@ -278,7 +288,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.profileType,
         e?.salary,
         e?.company,
-        e?.isGuest
+        e?.isGuest,
+        e?.empresa
       ]);
 
   @override
